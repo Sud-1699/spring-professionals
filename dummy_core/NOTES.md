@@ -1,0 +1,62 @@
+- Server Sides
+  - Model
+    - Create model class which contain particular info or data
+  - Controller
+    - Create controller to make a https endpoint for backend to consume resource.
+  - Add context-path in application.yml to create a starting api endpoint
+  - Docker Setup
+    - Docker CMD for postgresql
+      - \! clear cmd to clear history
+      - \l display list of DB
+      - \d display list of database and table
+    - Create Container for postgreSQL DB
+      - cmd 'docker run --name dev-postgres -e POSTGRES_PASSWORD=password -p 5632:5632 -d postgres:alpine'
+      - check is container created or not using 'docker ps' cmd
+    - Bash into postgres container
+      - cmd 'docker exec -it dev-postgres /bin/bash'
+        - cmd to set root user using psql 'psql -U postgres -W' password will be 'password'
+    - Creating a database and configure this into repository
+      - CREATE DATABASE <db-name> [option];
+      - To connect DB use cmd \c <db-name> and provide password
+      - Setup connection properties of DB in spring properties
+      - Create datasource package to config or build postgres datasource using hikariDS
+      - Create database migration to execute sql query in db.migration for flyway migration also keep that in mind file has naming convention
+  - Service
+    - Create service to perform business logic
+    - After creating service this need to inject into controller
+  - Repository
+    - Create database service in order to interact with DB
+    - Uses JDBC Template to create query and access data from DB
+    - Create mapper method to map db data into java object
+  - Use mockaroo api to generate random sql data 'https://www.mockaroo.com/'
+  - Exception Handling
+    - Create custom exception to handle runtime error 
+    - Need to handle error using exception
+    - Perform Email validation
+  - Create test in order to check logic is perfect or not
+  - Flyway Migration practice
+    - Another pro-tips using sql you can create an enum and typecasting into table
+      - Note if using enum from sql you need to caste them into insert query also e.g. 'gender::gender'
+    - Practice on application having multiple database and how to perform join operation, and interact with them using API endpoint
+  - IMP NOTES:
+    - Model
+    - Controller
+    - Service
+    - Repository
+    - Mapper (DTO)
+    - DB Configuration
+    - Application Properties Configuration
+
+- Client Sides
+  - Creating Web application using reactjs/angular
+    - 'npx create-react-app <app-name>' / 'ng new <app-name>'
+    - 'npm start'/'ng serve'  to run the web application
+    - Using Ant Design for UI
+      - Add antd using ng add
+      - Import library '@import "~ng-zorro-antd/ng-zorro-antd.min.css";' in global styles.css
+      - Create module to use antd component
+  - Angular Web Part:
+    - Components
+      - Create component to view data
+    - Service
+      - create service for fetching data from server using endpoint api

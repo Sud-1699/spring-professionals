@@ -1,0 +1,104 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="title"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzWidth]="modalWidth"
+
+>
+  <ng-container *nzModalContent>
+    <div *ngIf="modalType === 'add'">
+        <form [formGroup]="commonForm" nz-form class="editForm">
+            <nz-form-item>
+              <nz-form-control [nzSpan]="inputSpan">
+                <input formControlName="firstName" required
+                  nz-input
+                  name="firstName"
+                  type="text"
+                  id="firstname"
+                  placeholder="First Name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control [nzSpan]="inputSpan">
+                <input formControlName="lastName" required
+                  nz-input
+                  name="lastName"
+                  type="text"
+                  id="lastname"
+                  placeholder="Last Name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control [nzSpan]="inputSpan">
+                <input formControlName="email" required
+                  nz-input
+                  name="email"
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                />
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control [nzSpan]="inputSpan">
+                <nz-radio-group formControlName="gender" required>
+                    <label nz-radio nzValue="Male">Male</label>
+                    <label nz-radio nzValue="Female">Female</label>
+                </nz-radio-group>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+    </div>
+    <div *ngIf="modalType === 'edit'">
+      <form [formGroup]="commonForm" nz-form class="editForm">
+        <nz-form-item>
+          <nz-form-control [nzSpan]="inputSpan">
+            <input formControlName="firstName" required
+              nz-input
+              name="firstName"
+              type="text"
+              id="firstname"
+              placeholder="First Name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="inputSpan">
+            <input formControlName="lastName" required
+              nz-input
+              name="lastName"
+              type="text"
+              id="lastname"
+              placeholder="Last Name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="inputSpan">
+            <input formControlName="email" required
+              nz-input
+              name="email"
+              type="email"
+              id="email"
+              placeholder="Email"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="inputSpan">
+            <nz-radio-group formControlName="gender" required>
+                <label nz-radio nzValue="Male">Male</label>
+                <label nz-radio nzValue="Female">Female</label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <div *ngIf="modalType === 'delete'">
+      <h4>Do you want to delete</h4>
+    </div>
+  </ng-container>
+</nz-modal>

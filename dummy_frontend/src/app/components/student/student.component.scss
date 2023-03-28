@@ -1,0 +1,35 @@
+.sub-container {
+    width: '1350px';
+    margin: 0 auto;
+}
+
+.loader-container {
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    margin: 20px 0;
+}
+
+.search-add-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    float: right;
+
+    .add-button {
+        padding: 10px 0 ;
+        // margin-right: 5px;
+    }
+
+    .search-bar {
+        width: 250px;
+        padding: 10px 0;
+    }
+}
+
+.action-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}

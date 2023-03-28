@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="search-add-container">
+    <div class="add-button">
+      <button nz-button nzType="primary" nzShape="circle" (click)="addStudentModal()" title="Add Student"><span nz-icon nzType="plus"></span></button>
+    </div>
+    <div class="search-bar">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input placeholder="Search Box" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+  </div>
+  <div class="loader-container" *ngIf="!isLoaded">
+    <!-- <ng-template #indicatorTemplate><span nz-icon nzType="loading"></span></ng-template>
+        <nz-spin nzSimple [nzSize]="'large'" [nzIndicator]="indicatorTemplate"></nz-spin> -->
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+  </div>
+  <div class="sub-container" *ngIf="students && students.length > 0">
+    <nz-table #studentTable [nzTableLayout]="'auto'" [nzFrontPagination]="false" [nzData]="students">
+      <thead>
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentTable.data; let i = index">
+          <td>
+            <nz-avatar
+              nzSize="large"
+              [ngStyle]="{ 'background-color': student.avatarColor }"
+              [nzText]="
+                student.firstName.charAt(0).toUpperCase() +
+                student.lastName.charAt(0).toUpperCase()
+              "
+            ></nz-avatar>
+          </td>
+          <td>{{ student.studentId }}</td>
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.gender }}</td>
+          <td>{{ student.email }}</td>
+          <td>
+            <div class="action-container">
+              <div class="edit-button">
+                <button nz-button nzType="primary" nzShape="circle" (click)="editStudentModal(student)" title="Add Student"><span nz-icon nzType="edit"></span></button>
+              </div>
+              <div class="delete-button">
+                <button nz-button nzType="primary" nzDanger="true" nzShape="circle" (click)="deleteStudentModal(student.studentId)" title="Add Student"><span nz-icon nzType="delete"></span></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div *ngIf="showModal">
+    <app-generic-modal [modalObj]="modalObj" (sendObj)="modalService($event)"></app-generic-modal>
+  </div>
+</div>
