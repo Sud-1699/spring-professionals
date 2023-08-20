@@ -10,7 +10,7 @@
       - \l display list of DB
       - \d display list of database and table
     - Create Container for postgreSQL DB
-      - cmd 'docker run --name dev-postgres -e POSTGRES_PASSWORD=password -p 5632:5632 -d postgres:alpine'
+      - cmd 'docker run --name dev-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres:alpine'
       - check is container created or not using 'docker ps' cmd
     - Bash into postgres container
       - cmd 'docker exec -it dev-postgres /bin/bash'
